@@ -1,13 +1,14 @@
 <div>
-  <form>
+  <form (submit)="addAnswer()">
     <input
       type="text"
       name="inputText"
       placeholder="Answer.."
       class="answer-input"
+      [(ngModel)]="inputText"
     />
+    <div class="bottom">
+      <button type="submit" class="btn btn-warning">Confirm</button>
+    </div>
   </form>
-  <div class="bottom">
-    <button class="btn btn-warning">Confirm</button>
-  </div>
 </div>

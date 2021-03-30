@@ -6,7 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./quiz.component.css'],
 })
 export class QuizComponent implements OnInit {
+  answer: string = '';
+
+  inputText: string = '';
+
   constructor() {}
 
   ngOnInit(): void {}
+
+  addAnswer() {
+    this.answer = this.inputText;
+    this.inputText = '';
+    console.log(this.answer);
+  }
 }
