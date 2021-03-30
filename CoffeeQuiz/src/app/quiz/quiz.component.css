@@ -1,0 +1,16 @@
+.answer-input {
+  display: block;
+  width: 100%;
+  padding: 10px 15px;
+  border: none;
+  background-color: rgb(223, 215, 149);
+  margin-top: 15px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.bottom {
+  display: flex;
+  justify-content: center;
+  margin: 15px;
+}
