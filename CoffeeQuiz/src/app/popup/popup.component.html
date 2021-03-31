@@ -1,0 +1,26 @@
+<button type="submit" class="btn btn-warning" (click)="open(mymodal)">
+  Confirm
+</button>
+
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">One popup message..</h4>
+  </div>
+  <div class="modal-body">CORRECT ANSWER!!</div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="modal.close('Save click')"
+    >
+      Ok
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="modal.close('Save click')"
+    >
+      Next Question
+    </button>
+  </div>
+</ng-template>

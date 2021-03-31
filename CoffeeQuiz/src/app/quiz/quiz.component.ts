@@ -12,6 +12,8 @@ export class QuizComponent implements OnInit {
   inputText: string = '';
   showSpinner: boolean = true;
   score: number = 0;
+  correctANSW: boolean = false;
+  wrongANSW: boolean = false;
 
   constructor(private quiz: QuizDataService) {}
 
@@ -19,7 +21,7 @@ export class QuizComponent implements OnInit {
     this.quiz.getQuiz().subscribe((result) => {
       this.data = result;
       this.showSpinner = false;
-      console.log(this.data);
+      console.log(this.data[0].answer);
     });
   }
 
@@ -28,8 +30,10 @@ export class QuizComponent implements OnInit {
     if (this.data[0].answer == this.answer) {
       console.log('CORRECT ANSWER');
       this.score += this.data[0].value;
+      this.correctANSW = true;
     } else {
       console.log('Wrong Answer');
+      this.wrongANSW = true;
     }
     this.inputText = '';
   }
