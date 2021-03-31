@@ -1,6 +1,16 @@
 <div>
+  <div class="score">Score: {{ score }}</div>
+  <div *ngFor="let item of data" class="question">
+    {{ item.question }}
+  </div>
+  <loading-spinner
+    *ngIf="showSpinner"
+    class="loading-spinner"
+  ></loading-spinner>
   <form (submit)="addAnswer()">
     <input
+      #name="ngModel"
+      required
       type="text"
       name="inputText"
       placeholder="Answer.."
