@@ -1,5 +1,11 @@
 header {
   text-align: center;
-  color: bisque;
+  color: white;
   background-color: rgb(119, 65, 40);
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

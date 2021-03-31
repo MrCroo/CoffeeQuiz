@@ -15,6 +15,10 @@
   margin: 15px;
 }
 
+.button {
+  margin: 45px 35px 45px 35px;
+}
+
 .question {
   text-align: center;
   font-size: 24px;
@@ -26,9 +30,39 @@
   justify-content: center;
 }
 
-.score {
+.status {
+  margin: 30px;
   text-align: center;
   font-size: 24px;
   font-family: fantasy;
   font-weight: bold;
+}
+
+.correct {
+  display: block;
+  width: 100%;
+  padding: 10px 15px;
+  border: none;
+  background-color: rgb(160, 114, 53);
+  margin: 80px 0 80px 0;
+  font-size: 20px;
+  text-align: center;
+}
+
+.timer {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 24px;
+}
+
+.answer:hover {
+  color: black;
+}
+.answer {
+  color: rgb(160, 114, 53);
+}
+
+.status {
+  text-align: center;
 }

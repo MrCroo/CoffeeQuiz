@@ -1,5 +1,12 @@
 <div>
-  <div class="score">Score: {{ score }}</div>
+  <div class="status">
+    <div>Score: {{ score }}</div>
+    <div class="display">
+      {{ correctANSW ? "CORRECT ANSWER" : "" }}
+      {{ wrongANSW ? "WRONG ANSWER" : "" }}
+    </div>
+  </div>
+
   <div *ngFor="let item of data" class="question">
     {{ item.question }}
   </div>
@@ -7,9 +14,11 @@
     *ngIf="showSpinner"
     class="loading-spinner"
   ></loading-spinner>
+
   <form (submit)="addAnswer()">
     <input
       #name="ngModel"
+      disabled="{{ disable }}"
       required
       type="text"
       name="inputText"
@@ -18,7 +27,25 @@
       [(ngModel)]="inputText"
     />
     <div class="bottom">
-      <popup></popup>
+      <button type="submit" class="btn btn-warning button">
+        Confirm Answer
+      </button>
+      <button
+        type="button"
+        (click)="newQuestion()"
+        class="btn btn-secondary button"
+      >
+        Another Question
+      </button>
     </div>
   </form>
+
+  <div class="correct">
+    <div class="timer">
+      {{ answerTimer ? answerTimer : "The answer is:" }}
+    </div>
+    <div class="answer" *ngFor="let item of data">
+      {{ answerTimer == 0 ? item.answer : "Here will be your answer" }}
+    </div>
+  </div>
 </div>
