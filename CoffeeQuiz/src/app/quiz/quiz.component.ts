@@ -14,23 +14,35 @@ export class QuizComponent implements OnInit {
   score: number = 0;
   correctANSW: boolean = false;
   wrongANSW: boolean = false;
-  answerTimer: number = 5;
+  answerTimer: number = 2;
   interval: any;
   isActive: boolean = true;
   disable: boolean = false;
+  categorys: any;
+  selectedCatId: number = 0;
+  data2: any;
 
   constructor(private quiz: QuizDataService) {}
 
   ngOnInit(): void {
-    this.getData();
+    this.getRandom();
+    this.getCategorys();
     this.startTimer();
   }
 
-  getData() {
-    this.quiz.getQuiz().subscribe((result) => {
-      this.data = result;
-      this.showSpinner = false;
-      console.log(this.data[0].answer);
+  getRandom() {
+    if (this.selectedCatId == 0) {
+      this.quiz.getRandomQuiz().subscribe((result) => {
+        this.data = result;
+        this.showSpinner = false;
+        this.selectedCatId = this.data[0].category_id;
+      });
+    } else this.getCat();
+  }
+
+  getCategorys() {
+    this.quiz.getCategorys(100).subscribe((result) => {
+      this.categorys = result;
     });
   }
 
@@ -40,8 +52,8 @@ export class QuizComponent implements OnInit {
         if (this.answerTimer > 0) {
           this.answerTimer--;
         }
-        console.log('1');
-        if (this.answerTimer == 0) {
+        this.isActive = false;
+        if (this.answerTimer <= 0) {
           clearInterval(this.interval);
           this.isActive = false;
         }
@@ -49,16 +61,13 @@ export class QuizComponent implements OnInit {
     }
   }
 
-  resetStatus() {
-    this.wrongANSW = false;
-  }
-
   newQuestion() {
     this.correctANSW = false;
     this.wrongANSW = false;
-    this.getData();
-    this.answerTimer = 5;
+    this.getRandom();
+    this.answerTimer = 2;
     this.isActive = true;
+    clearInterval();
     this.startTimer();
     this.disable = false;
   }
@@ -66,14 +75,19 @@ export class QuizComponent implements OnInit {
   addAnswer() {
     this.answer = this.inputText.toLowerCase();
     if (this.data[0].answer.toLowerCase() == this.answer) {
-      console.log('CORRECT ANSWER');
       this.score += this.data[0].value;
       this.correctANSW = true;
       this.disable = true;
     } else {
-      console.log('Wrong Answer');
       this.wrongANSW = true;
     }
     this.inputText = '';
+  }
+
+  getCat() {
+    this.quiz.getCatById(this.selectedCatId).subscribe((result) => {
+      this.data = result;
+      this.showSpinner = false;
+    });
   }
 }
