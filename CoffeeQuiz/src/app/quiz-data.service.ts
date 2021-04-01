@@ -5,11 +5,22 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class QuizDataService {
-  url: string = 'http://jservice.io/api/random';
+  rootUrl: string = 'http://jservice.io/api/';
+  random: string = 'random';
+  categories: string = 'categories?count=';
+  catById: string = 'clues?category=';
 
   constructor(private http: HttpClient) {}
 
-  getQuiz() {
-    return this.http.get(this.url);
+  getRandomQuiz() {
+    return this.http.get(this.rootUrl + this.random);
+  }
+
+  getCategorys(howManyAtOnce: number) {
+    return this.http.get(this.rootUrl + this.categories + howManyAtOnce);
+  }
+
+  getCatById(id: number) {
+    return this.http.get(this.rootUrl + this.catById + id);
   }
 }
