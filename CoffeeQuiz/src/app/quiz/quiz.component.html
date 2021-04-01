@@ -7,18 +7,33 @@
     </div>
   </div>
 
-  <div *ngFor="let item of data" class="question">
-    {{ item.question }}
-  </div>
+  <div
+    *ngFor="let item of data"
+    [innerHtml]="item.question"
+    class="question"
+  ></div>
   <loading-spinner
     *ngIf="showSpinner"
     class="loading-spinner"
   ></loading-spinner>
 
   <form (submit)="addAnswer()">
+    <select
+      #name="ngModel"
+      [(ngModel)]="selectedCatId"
+      name="selectedCatId"
+      class="form-select select"
+    >
+      <option selected>Select a Category</option>
+      <option
+        *ngFor="let cat of categorys"
+        [value]="cat.id"
+        [innerHtml]="cat.title"
+      ></option>
+    </select>
     <input
       #name="ngModel"
-      disabled="{{ disable }}"
+      [disabled]="disable"
       required
       type="text"
       name="inputText"
@@ -27,7 +42,7 @@
       [(ngModel)]="inputText"
     />
     <div class="bottom">
-      <button type="submit" class="btn btn-warning button">
+      <button [disabled]="disable" type="submit" class="btn btn-warning button">
         Confirm Answer
       </button>
       <button
@@ -41,11 +56,14 @@
   </form>
 
   <div class="correct">
-    <div class="timer">
-      {{ answerTimer ? answerTimer : "The answer is:" }}
-    </div>
-    <div class="answer" *ngFor="let item of data">
-      {{ answerTimer == 0 ? item.answer : "Here will be your answer" }}
-    </div>
+    <div
+      class="timer"
+      [innerHtml]="answerTimer ? answerTimer : 'The answer is: '"
+    ></div>
+    <div
+      class="answer"
+      *ngFor="let item of data"
+      [innerHtml]="answerTimer == 0 ? item.answer : 'Here will be your answer'"
+    ></div>
   </div>
 </div>

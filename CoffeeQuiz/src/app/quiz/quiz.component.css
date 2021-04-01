@@ -3,6 +3,7 @@
   width: 100%;
   padding: 10px 15px;
   border: none;
+  outline-color: darkred;
   background-color: rgb(223, 215, 149);
   margin-top: 15px;
   font-size: 20px;
@@ -65,4 +66,9 @@
 
 .status {
   text-align: center;
+}
+
+.select {
+  margin-left: 25%;
+  max-width: 50%;
 }
