@@ -1,11 +1,14 @@
 <div class="base">
-  <div>
-    <select class="form-select select">
-      <option selected>Random</option>
-      <option>Category</option>
-      <option>Value</option>
-      <option>Creation Data</option>
+  <div class="filter">
+    <select class="form-select select" #name="ngModel" [(ngModel)]="selected">
+      <option selected [value]="1">Random</option>
+      <option [value]="3">Category</option>
+      <option [value]="3">Value</option>
+      <option [value]="3">Creation Data</option>
     </select>
+    <button class="btn btn-secondary" type="button" (click)="refresh()">
+      Refresh
+    </button>
   </div>
   <table class="table table-striped">
     <thead>

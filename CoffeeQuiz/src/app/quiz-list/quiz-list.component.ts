@@ -8,6 +8,7 @@ import { QuizDataService } from '../quiz-data.service';
 })
 export class QuizListComponent implements OnInit {
   data: any;
+  selected: string = '';
 
   constructor(private quiz: QuizDataService) {}
 
@@ -19,5 +20,15 @@ export class QuizListComponent implements OnInit {
     this.quiz.get100Quiz(100).subscribe((result) => {
       this.data = result;
     });
+  }
+
+  getCat() {
+    this.quiz.getCategorys(100).subscribe((result) => {
+      this.data = result;
+    });
+  }
+
+  refresh() {
+    this.getQuizlist();
   }
 }
