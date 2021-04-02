@@ -61,6 +61,11 @@ export class QuizComponent implements OnInit {
     }
   }
 
+  randomQuestion() {
+    this.selectedCatId = 0;
+    this.newQuestion();
+  }
+
   newQuestion() {
     this.correctANSW = false;
     this.wrongANSW = false;
@@ -73,8 +78,8 @@ export class QuizComponent implements OnInit {
   }
 
   addAnswer() {
-    this.answer = this.inputText.toLowerCase();
-    if (this.data[0].answer.toLowerCase() == this.answer) {
+    this.answer = this.inputText.toLowerCase().replace(' ', '');
+    if (this.data[0].answer.toLowerCase().replace(' ', '') == this.answer) {
       this.score += this.data[0].value;
       this.correctANSW = true;
       this.disable = true;

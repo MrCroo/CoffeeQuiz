@@ -41,6 +41,13 @@
       [(ngModel)]="inputText"
     />
     <div class="bottom">
+      <button
+        type="button"
+        (click)="randomQuestion()"
+        class="btn btn-secondary button"
+      >
+        Random Question
+      </button>
       <button [disabled]="disable" type="submit" class="btn btn-warning button">
         Confirm Answer
       </button>
@@ -49,7 +56,7 @@
         (click)="newQuestion()"
         class="btn btn-secondary button"
       >
-        Another Question
+        Category Question
       </button>
     </div>
   </form>
