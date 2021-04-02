@@ -9,6 +9,7 @@ export class QuizDataService {
   random: string = 'random';
   categories: string = 'categories?count=';
   catById: string = 'clues?category=';
+  randomQuizes: string = 'random?count=';
 
   constructor(private http: HttpClient) {}
 
@@ -22,5 +23,9 @@ export class QuizDataService {
 
   getCatById(id: number) {
     return this.http.get(this.rootUrl + this.catById + id);
+  }
+
+  get100Quiz(howManyAtOnce: number) {
+    return this.http.get(this.rootUrl + this.randomQuizes + howManyAtOnce);
   }
 }

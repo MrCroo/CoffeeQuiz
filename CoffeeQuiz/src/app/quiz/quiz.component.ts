@@ -1,6 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizDataService } from './../quiz-data.service';
 
+export interface One {
+  airdate: string;
+  answer: string;
+  category: {
+    id: number;
+    title: string;
+    created_at: string;
+    updated_at: string;
+    clues_count: number;
+  };
+  category_id: number;
+  created_at: string;
+  game_id: number;
+  id: number;
+  invalid_count: number;
+  question: string;
+  updated_at: string;
+  value: number;
+}
+
 @Component({
   selector: 'quiz',
   templateUrl: './quiz.component.html',
@@ -14,13 +34,12 @@ export class QuizComponent implements OnInit {
   score: number = 0;
   correctANSW: boolean = false;
   wrongANSW: boolean = false;
-  answerTimer: number = 2;
+  answerTimer: number = 5;
   interval: any;
   isActive: boolean = true;
   disable: boolean = false;
   categorys: any;
   selectedCatId: number = 0;
-  data2: any;
 
   constructor(private quiz: QuizDataService) {}
 
@@ -92,6 +111,7 @@ export class QuizComponent implements OnInit {
   getCat() {
     this.quiz.getCatById(this.selectedCatId).subscribe((result) => {
       this.data = result;
+      console.log(this.data);
       this.showSpinner = false;
     });
   }

@@ -1,0 +1,28 @@
+<div class="base">
+  <div>
+    <select class="form-select select">
+      <option selected>Random</option>
+      <option>Category</option>
+      <option>Value</option>
+      <option>Creation Data</option>
+    </select>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Question</th>
+        <th scope="col">Answer</th>
+        <th scope="col">Category</th>
+      </tr>
+    </thead>
+    <tbody class="over">
+      <tr *ngFor="let item of data">
+        <td [innerHtml]="item.id"></td>
+        <td [innerHtml]="item.question"></td>
+        <td [innerHtml]="item.answer"></td>
+        <td [innerHtml]="item.category.title"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

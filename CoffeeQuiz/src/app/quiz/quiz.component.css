@@ -20,6 +20,10 @@
   margin: 45px 35px 45px 35px;
 }
 
+.button.m {
+  background-color: #ffe69c;
+}
+
 .question {
   text-align: center;
   font-size: 24px;
@@ -44,7 +48,7 @@
   width: 100%;
   padding: 10px 15px;
   border: none;
-  background-color: rgb(160, 114, 53);
+  background-color: #cc9a06;
   margin: 80px 0 80px 0;
   font-size: 20px;
   text-align: center;
@@ -61,7 +65,7 @@
   color: black;
 }
 .answer {
-  color: rgb(160, 114, 53);
+  color: #cc9a06;
 }
 
 .status {
@@ -71,4 +75,8 @@
 .select {
   margin-left: 25%;
   max-width: 50%;
+}
+
+.base {
+  margin-top: 8rem;
 }

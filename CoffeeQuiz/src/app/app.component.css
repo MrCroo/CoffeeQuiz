@@ -1,11 +1,38 @@
 header {
   text-align: center;
   color: white;
-  background-color: rgb(119, 65, 40);
+  background-color: #653208;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
-div {
+.buttons {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  margin-top: 3rem;
+  width: 100%;
+  position: fixed;
+  background-color: #653208;
+}
+
+.menubutton {
+  color: black;
+  padding: 3px;
+  margin: 10px;
+  border-radius: 4px;
+  border-width: 0px;
+  background-color: #ffe69c;
+}
+
+.backimg {
+  background-image: url("./../assets/vecteezy_a-blurred-coffee-house-background_1835803.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.router {
+  overflow: auto;
 }
