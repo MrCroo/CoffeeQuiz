@@ -1,17 +1,17 @@
 <div class="backimg">
   <header>
     <h1>Coffee Quiz</h1>
+    <div>
+      <nav>
+        <button routerLink="/randomquiz" class="menubutton">
+          Random Question
+        </button>
+        <button routerLink="/quizlist" class="menubutton">
+          List Of Questions
+        </button>
+      </nav>
+    </div>
   </header>
-  <div class="buttons">
-    <nav>
-      <button routerLink="/randomquiz" class="menubutton">
-        Random Question
-      </button>
-      <button routerLink="/quizlist" class="menubutton">
-        List Of Questions
-      </button>
-    </nav>
-  </div>
   <div class="router">
     <router-outlet></router-outlet>
   </div>

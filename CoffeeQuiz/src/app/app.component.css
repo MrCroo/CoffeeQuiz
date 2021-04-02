@@ -8,15 +8,6 @@ header {
   width: 100%;
 }
 
-.buttons {
-  display: flex;
-  justify-content: center;
-  margin-top: 3rem;
-  width: 100%;
-  position: fixed;
-  background-color: #653208;
-}
-
 .menubutton {
   color: black;
   padding: 3px;
