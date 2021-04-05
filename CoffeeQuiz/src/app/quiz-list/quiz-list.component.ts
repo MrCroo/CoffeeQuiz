@@ -9,11 +9,15 @@ import { QuizDataService } from '../quiz-data.service';
 export class QuizListComponent implements OnInit {
   data: any;
   selected: string = '';
+  clickedQ: string = '';
+  clickedCAT: string = '';
+  clickedID: number = 0;
 
   constructor(private quiz: QuizDataService) {}
 
   ngOnInit(): void {
     this.getQuizlist();
+    
   }
 
   getQuizlist() {
@@ -28,7 +32,23 @@ export class QuizListComponent implements OnInit {
     });
   }
 
+  chosenID(value:number) {
+      this.clickedID = value;
+    console.log(this.clickedID);
+  }
+
+  chosenQ(value:string) {
+    this.clickedQ = value;
+    console.log(this.clickedQ);
+  }
+
+  chosenCAT(value:string) {
+    this.clickedCAT = value;
+    console.log(this.clickedCAT);
+  }
+
   refresh() {
     this.getQuizlist();
+    
   }
 }
