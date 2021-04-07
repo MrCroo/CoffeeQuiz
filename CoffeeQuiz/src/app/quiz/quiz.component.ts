@@ -2,26 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { QuizDataService } from './../quiz-data.service';
 import { AppComponent} from './../app.component'
 
-export interface One {
-  airdate: string;
-  answer: string;
-  category: {
-    id: number;
-    title: string;
-    created_at: string;
-    updated_at: string;
-    clues_count: number;
-  };
-  category_id: number;
-  created_at: string;
-  game_id: number;
-  id: number;
-  invalid_count: number;
-  question: string;
-  updated_at: string;
-  value: number;
-}
-
 @Component({
   selector: 'quiz',
   templateUrl: './quiz.component.html',
@@ -35,7 +15,7 @@ export class QuizComponent implements OnInit {
   showSpinner: boolean = true;
   correctANSW: boolean = false;
   wrongANSW: boolean = false;
-  answerTimer: number = 5;
+  answerTimer: number = 2;
   interval: any;
   isActive: boolean = true;
   disable: boolean = false;
