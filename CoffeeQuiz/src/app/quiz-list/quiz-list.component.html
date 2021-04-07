@@ -20,8 +20,8 @@
     </thead>
     <tbody class="over">
       <tr *ngFor="let item of data">
-        <td [innerHtml]="item.id" (click)="chosenID(item.id)"></td>
-        <td [innerHtml]="item.question" (click)="chosenQ(item)"></td>
+        <td [innerHtml]="item.id"></td>
+        <td [innerHtml]="item.question" (click)="chosenQ(item)"  routerLink="/randomquiz"></td>
         <td [innerHtml]="item.category.title" (click)="chosenCAT(item.category.id)"></td>
       </tr>
     </tbody>
