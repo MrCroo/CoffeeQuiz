@@ -12,5 +12,6 @@ export class AppComponent {
   score: number = 0;
   selectedCatId:number = 0;
   data:any[] = [];
+  random:boolean = true;
 
 }
