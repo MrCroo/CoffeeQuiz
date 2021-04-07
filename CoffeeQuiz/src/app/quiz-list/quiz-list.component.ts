@@ -24,17 +24,6 @@ export class QuizListComponent implements OnInit {
     });
   }
 
-  getCat() {
-    this.quiz.getCategorys(100).subscribe((result) => {
-      this.data = result;
-    });
-  }
-
-  chosenID(value:number) {
-      this.main.clickedID = value;
-    console.log(this.main.clickedID);
-  }
-
   chosenQ(value:any) {
     this.main.data = [];
     this.main.data.push(value);
@@ -44,8 +33,9 @@ export class QuizListComponent implements OnInit {
   }
 
   chosenCAT(value:number) {
-    this.main.selectedCatId = value;
-    console.log(this.main.selectedCatId);
+    this.quiz.getCatById(value).subscribe((result) => {
+      this.data = result;
+    });
   }
 
   refresh() {
