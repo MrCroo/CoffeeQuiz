@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizDataService } from './../quiz-data.service';
+import { AppComponent} from './../app.component'
 
 export interface One {
   airdate: string;
@@ -28,10 +29,10 @@ export interface One {
 })
 export class QuizComponent implements OnInit {
   answer: string = '';
-  data: any;
+  data: any = this.main.data[0];
   inputText: string = '';
+  random:boolean = true;
   showSpinner: boolean = true;
-  score: number = 0;
   correctANSW: boolean = false;
   wrongANSW: boolean = false;
   answerTimer: number = 5;
@@ -39,10 +40,13 @@ export class QuizComponent implements OnInit {
   isActive: boolean = true;
   disable: boolean = false;
   categorys: any;
-  selectedCatId: number = 0;
+  selectedCatId: number = this.main.selectedCatId;
   data2:any[] = [];
+  score:number = this.main.score;
+  randomNumber:number = 0;
+  prevRandomNumber: number = 0;
 
-  constructor(private quiz: QuizDataService) {}
+  constructor(private quiz: QuizDataService, private main: AppComponent) {}
 
   ngOnInit(): void {
     this.getRandom();
@@ -51,13 +55,14 @@ export class QuizComponent implements OnInit {
   }
 
   getRandom() {
-    if (this.selectedCatId == 0) {
+    if (this.random) {
       this.quiz.getRandomQuiz().subscribe((result) => {
         this.data = result;
         this.data2 = [];
         this.data2.push(this.data[0]);
         this.showSpinner = false;
         this.selectedCatId = this.data2[0].category_id;
+        this.random=false;
       });
     } else this.getCat();
   }
@@ -84,7 +89,7 @@ export class QuizComponent implements OnInit {
   }
 
   randomQuestion() {
-    this.selectedCatId = 0;
+    this.random = true;
     this.newQuestion();
   }
 
@@ -102,7 +107,7 @@ export class QuizComponent implements OnInit {
   addAnswer() {
     this.answer = this.inputText.toLowerCase().replace(' ', '');
     if (this.data2[0].answer.toLowerCase().replace(' ', '') == this.answer) {
-      this.score += this.data2[0].value;
+      this.main.score += this.data2[0].value;
       this.correctANSW = true;
       this.disable = true;
     } else {
@@ -115,7 +120,12 @@ export class QuizComponent implements OnInit {
     this.quiz.getCatById(this.selectedCatId).subscribe((result) => {
       this.data = result;
       this.data2 = [];
-      this.data2.push(this.data[Math.floor(Math.random()*(this.data.length))]);
+      while(this.randomNumber == this.prevRandomNumber) {
+        this.randomNumber = Math.floor(Math.random()*(this.data.length));
+      }
+      this.prevRandomNumber = this.randomNumber;
+      this.data2.push(this.data[this.randomNumber
+        ]);
       this.showSpinner = false;
     });
   }

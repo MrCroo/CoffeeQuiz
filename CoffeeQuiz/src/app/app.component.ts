@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'CoffeeQuiz';
+  selected: string = '';
+  clickedQ: string = '';
+  clickedID: number = 0;
+  score: number = 0;
+  selectedCatId:number = 0;
+  data:any[] = [];
+
 }

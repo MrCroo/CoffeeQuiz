@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizDataService } from '../quiz-data.service';
+import { AppComponent} from './../app.component'
 
 @Component({
   selector: 'app-quiz-list',
@@ -8,12 +9,9 @@ import { QuizDataService } from '../quiz-data.service';
 })
 export class QuizListComponent implements OnInit {
   data: any;
-  selected: string = '';
-  clickedQ: string = '';
-  clickedCAT: string = '';
-  clickedID: number = 0;
+  
 
-  constructor(private quiz: QuizDataService) {}
+  constructor(private quiz: QuizDataService, private main: AppComponent) {}
 
   ngOnInit(): void {
     this.getQuizlist();
@@ -33,18 +31,21 @@ export class QuizListComponent implements OnInit {
   }
 
   chosenID(value:number) {
-      this.clickedID = value;
-    console.log(this.clickedID);
+      this.main.clickedID = value;
+    console.log(this.main.clickedID);
   }
 
-  chosenQ(value:string) {
-    this.clickedQ = value;
-    console.log(this.clickedQ);
+  chosenQ(value:any) {
+    this.main.data = [];
+    this.main.data.push(value);
+    this.main.selectedCatId = value.id;
+    console.log(this.main.selectedCatId);
+    console.log(this.main.data);
   }
 
-  chosenCAT(value:string) {
-    this.clickedCAT = value;
-    console.log(this.clickedCAT);
+  chosenCAT(value:number) {
+    this.main.selectedCatId = value;
+    console.log(this.main.selectedCatId);
   }
 
   refresh() {

@@ -21,8 +21,8 @@
     <tbody class="over">
       <tr *ngFor="let item of data">
         <td [innerHtml]="item.id" (click)="chosenID(item.id)"></td>
-        <td [innerHtml]="item.question" (click)="chosenQ(item.question)"></td>
-        <td [innerHtml]="item.category.title" (click)="chosenCAT(item.category.title)"></td>
+        <td [innerHtml]="item.question" (click)="chosenQ(item)"></td>
+        <td [innerHtml]="item.category.title" (click)="chosenCAT(item.category.id)"></td>
       </tr>
     </tbody>
   </table>
