@@ -116,7 +116,6 @@ export class QuizComponent implements OnInit {
       this.data = result;
       this.data2 = [];
       this.data2.push(this.data[Math.floor(Math.random()*(this.data.length))]);
-      console.log(this.data2[0].category_id);
       this.showSpinner = false;
     });
   }
