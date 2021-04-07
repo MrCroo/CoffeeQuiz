@@ -80,3 +80,8 @@
 .base {
   margin-top: 8rem;
 }
+
+.catDisplay {
+  text-align: center;
+  font-size: 24px;
+}

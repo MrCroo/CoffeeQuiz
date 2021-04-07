@@ -6,6 +6,7 @@
       {{ wrongANSW ? "WRONG ANSWER" : "" }}
     </div>
   </div>
+  <div class="catDisplay" *ngFor="let item of data2" >Category:  {{item.category.title}}</div>
 
   <div
     *ngFor="let item of data2"
@@ -19,6 +20,7 @@
 
   <form (submit)="addAnswer()">
     <select
+    aria-label="Example"
       #name="ngModel"
       [(ngModel)]="selectedCatId"
       name="selectedCatId"
