@@ -40,6 +40,7 @@ export class QuizComponent implements OnInit {
   disable: boolean = false;
   categorys: any;
   selectedCatId: number = 0;
+  data2:any[] = [];
 
   constructor(private quiz: QuizDataService) {}
 
@@ -53,8 +54,10 @@ export class QuizComponent implements OnInit {
     if (this.selectedCatId == 0) {
       this.quiz.getRandomQuiz().subscribe((result) => {
         this.data = result;
+        this.data2 = [];
+        this.data2.push(this.data[0]);
         this.showSpinner = false;
-        this.selectedCatId = this.data[0].category_id;
+        this.selectedCatId = this.data2[0].category_id;
       });
     } else this.getCat();
   }
@@ -98,8 +101,8 @@ export class QuizComponent implements OnInit {
 
   addAnswer() {
     this.answer = this.inputText.toLowerCase().replace(' ', '');
-    if (this.data[0].answer.toLowerCase().replace(' ', '') == this.answer) {
-      this.score += this.data[0].value;
+    if (this.data2[0].answer.toLowerCase().replace(' ', '') == this.answer) {
+      this.score += this.data2[0].value;
       this.correctANSW = true;
       this.disable = true;
     } else {
@@ -111,7 +114,9 @@ export class QuizComponent implements OnInit {
   getCat() {
     this.quiz.getCatById(this.selectedCatId).subscribe((result) => {
       this.data = result;
-      console.log(this.data);
+      this.data2 = [];
+      this.data2.push(this.data[Math.floor(Math.random()*(this.data.length))]);
+      console.log(this.data2[0].category_id);
       this.showSpinner = false;
     });
   }
