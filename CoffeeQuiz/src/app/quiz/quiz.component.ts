@@ -11,7 +11,6 @@ export class QuizComponent implements OnInit {
   answer: string = '';
   data: any = this.main.data[0];
   inputText: string = '';
-  random:boolean = true;
   showSpinner: boolean = true;
   correctANSW: boolean = false;
   wrongANSW: boolean = false;
@@ -25,26 +24,31 @@ export class QuizComponent implements OnInit {
   score:number = this.main.score;
   randomNumber:number = 0;
   prevRandomNumber: number = 0;
+  random:boolean = this.main.random;
 
   constructor(private quiz: QuizDataService, private main: AppComponent) {}
 
   ngOnInit(): void {
-    this.getRandom();
+    this.start();
     this.getCategorys();
     this.startTimer();
   }
 
-  getRandom() {
+  start() {
     if (this.random) {
-      this.quiz.getRandomQuiz().subscribe((result) => {
-        this.data = result;
-        this.data2 = [];
-        this.data2.push(this.data[0]);
-        this.showSpinner = false;
-        this.selectedCatId = this.data2[0].category_id;
-        this.random=false;
-      });
+      this.getRandom();
     } else this.getCat();
+  }
+
+  getRandom() {
+    this.quiz.getRandomQuiz().subscribe((result) => {
+      this.data = result;
+      this.data2 = [];
+      this.data2.push(this.data[0]);
+      this.showSpinner = false;
+      this.selectedCatId = this.data2[0].category_id;
+      this.random=false;
+    });
   }
 
   getCategorys() {
@@ -76,7 +80,7 @@ export class QuizComponent implements OnInit {
   newQuestion() {
     this.correctANSW = false;
     this.wrongANSW = false;
-    this.getRandom();
+    this.start();
     this.answerTimer = 2;
     this.isActive = true;
     clearInterval();
