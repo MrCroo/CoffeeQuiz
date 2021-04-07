@@ -1,7 +1,7 @@
 <div class="base">
   <div class="status">
     <div>Score: {{ score }}</div>
-    <div class="display">
+    <div>
       {{ correctANSW ? "CORRECT ANSWER" : "" }}
       {{ wrongANSW ? "WRONG ANSWER" : "" }}
     </div>
@@ -42,7 +42,7 @@
       class="answer-input"
       [(ngModel)]="inputText"
     />
-    <div class="bottom">
+    <div class="buttonPanel">
       <button
         type="button"
         (click)="randomQuestion()"
@@ -50,7 +50,7 @@
       >
         Random Question
       </button>
-      <button [disabled]="disable" type="submit" class="btn button m">
+      <button [disabled]="disable" type="submit" class="btn button middle">
         Confirm Answer
       </button>
       <button
@@ -63,7 +63,7 @@
     </div>
   </form>
 
-  <div class="correct">
+  <div class="correctAnswerDisplay">
     <div
       class="timer"
       [innerHtml]="answerTimer ? answerTimer : 'The answer is: '"
