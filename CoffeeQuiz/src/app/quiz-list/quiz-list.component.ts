@@ -9,7 +9,7 @@ import { AppComponent} from './../app.component'
 })
 export class QuizListComponent implements OnInit {
   data: any;
-  
+  showSpinner: boolean = true;
 
   constructor(private quiz: QuizDataService, private main: AppComponent) {}
 
@@ -21,6 +21,7 @@ export class QuizListComponent implements OnInit {
   getQuizlist() {
     this.quiz.get100Quiz(100).subscribe((result) => {
       this.data = result;
+      this.showSpinner = false;
     });
   }
 

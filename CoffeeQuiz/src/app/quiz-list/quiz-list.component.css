@@ -7,3 +7,10 @@
   padding: 30px;
   justify-content: space-around;
 }
+
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}

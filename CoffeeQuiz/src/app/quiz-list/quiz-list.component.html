@@ -2,8 +2,8 @@
   <div class="filter">
     <select class="form-select select">
       <option selected>Random</option>
-      <option >Category</option>
-      <option >Value</option>
+      <option>Category</option>
+      <option>Value</option>
       <option>Creation Data</option>
     </select>
     <button class="btn btn-secondary" type="button" (click)="refresh()">
@@ -19,9 +19,12 @@
       </tr>
     </thead>
     <tbody class="over">
+      <td colspan="3">
+        <loading-spinner *ngIf="showSpinner" class="loading-spinner"></loading-spinner>
+      </td>
       <tr *ngFor="let item of data">
         <td [innerHtml]="item.id"></td>
-        <td [innerHtml]="item.question" (click)="chosenQ(item)"  routerLink="/randomquiz"></td>
+        <td [innerHtml]="item.question" (click)="chosenQ(item)" routerLink="/randomquiz"></td>
         <td [innerHtml]="item.category.title" (click)="chosenCAT(item.category.id)"></td>
       </tr>
     </tbody>

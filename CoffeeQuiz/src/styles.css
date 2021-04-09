@@ -3,3 +3,10 @@
   margin: 0;
   padding: 0;
 }
+
+.backimg {
+  background-image: url("./assets/vecteezy_a-blurred-coffee-house-background_1835803.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}

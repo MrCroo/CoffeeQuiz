@@ -17,13 +17,6 @@ header {
   background-color: #ffe69c;
 }
 
-.backimg {
-  background-image: url("./../assets/vecteezy_a-blurred-coffee-house-background_1835803.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-}
-
 .router {
   overflow: auto;
 }
