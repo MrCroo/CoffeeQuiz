@@ -21,7 +21,7 @@ export class QuizComponent implements OnInit {
   categorys: any;
   selectedCatId: number = this.main.selectedCatId;
   data2:any[] = [];
-  score:number = this.main.score;
+  score:number = 0;
   randomNumber:number = 0;
   prevRandomNumber: number = 0;
   random:boolean = this.main.random;
@@ -51,7 +51,7 @@ export class QuizComponent implements OnInit {
     });
   }
 
-  getCategorys() {
+  async getCategorys() {
     this.quiz.getCategorys(100).subscribe((result) => {
       this.categorys = result;
     });
@@ -98,6 +98,10 @@ export class QuizComponent implements OnInit {
       this.wrongANSW = true;
     }
     this.inputText = '';
+  }
+
+  points() {
+    return this.score = this.main.score;
   }
 
   getCat() {
