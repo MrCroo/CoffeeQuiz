@@ -25,6 +25,7 @@ export class QuizComponent implements OnInit {
   randomNumber:number = 0;
   prevRandomNumber: number = 0;
   random:boolean = this.main.random;
+  selectedQuestion:boolean = this.main.selectedQuestion;
 
   constructor(private quiz: QuizDataService, private main: AppComponent) {}
 
@@ -37,7 +38,19 @@ export class QuizComponent implements OnInit {
   start() {
     if (this.random) {
       this.getRandom();
-    } else this.getCat();
+    } else if(this.selectedQuestion) {
+      this.getSelected();
+    } else {
+      this.getCat();
+    }
+  }
+
+  getSelected() {
+    this.data2 = [];
+    this.data2.push(this.data);
+    this.showSpinner = false;
+    this.selectedQuestion = false;
+    this.random = false;
   }
 
   getRandom() {

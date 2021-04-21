@@ -15,7 +15,6 @@ export class QuizListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getQuizlist();
-    
   }
 
   getQuizlist() {
@@ -28,9 +27,9 @@ export class QuizListComponent implements OnInit {
   chosenQ(value:any) {
     this.main.data = [];
     this.main.data.push(value);
-    this.main.selectedCatId = value.id;
-    console.log(this.main.selectedCatId);
-    console.log(this.main.data);
+    this.main.selectedCatId = value.category_id;
+    this.main.random = false;
+    this.main.selectedQuestion = true;
   }
 
   chosenCAT(value:number) {
@@ -41,6 +40,5 @@ export class QuizListComponent implements OnInit {
 
   refresh() {
     this.getQuizlist();
-    
   }
 }

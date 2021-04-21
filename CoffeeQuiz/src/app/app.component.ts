@@ -13,5 +13,6 @@ export class AppComponent {
   selectedCatId:number = 0;
   data:any[] = [];
   random:boolean = true;
+  selectedQuestion:boolean = false;
 
 }
