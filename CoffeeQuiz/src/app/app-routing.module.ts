@@ -12,6 +12,10 @@ const routes: Routes = [
     path: 'quizlist',
     component: QuizListComponent,
   },
+  {
+    path: '',
+    component: QuizComponent,
+  },
 ];
 
 @NgModule({
